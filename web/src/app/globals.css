@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.star {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 12px rgba(226, 232, 240, 0.55);
+  animation-name: starTwinkle;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.animate-fly-across {
+  animation: flyAcross 24s linear infinite;
+}
+
+.animate-fly-return {
+  animation: flyReturn 28s linear infinite;
+}
+
+@keyframes starTwinkle {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.9);
+  }
+  35% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+  55% {
+    opacity: 0.4;
+    transform: scale(0.95);
+  }
+  72% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  85% {
+    opacity: 0.45;
+    transform: scale(0.9);
+  }
+}
+
+@keyframes flyAcross {
+  0% {
+    transform: translateX(-10%) translateY(0) scale(0.85);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  45% {
+    transform: translateX(55vw) translateY(-5vh) scale(1);
+  }
+  80% {
+    transform: translateX(110vw) translateY(-12vh) scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(130vw) translateY(-15vh) scale(1.1);
+    opacity: 0;
+  }
+}
+
+@keyframes flyReturn {
+  0% {
+    transform: scaleX(-1) translateX(10%) translateY(6vh) scale(0.9);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.9;
+  }
+  48% {
+    transform: scaleX(-1) translateX(-55vw) translateY(-4vh) scale(1);
+  }
+  85% {
+    transform: scaleX(-1) translateX(-110vw) translateY(-12vh) scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(-1) translateX(-125vw) translateY(-16vh) scale(1.05);
+    opacity: 0;
+  }
+}
